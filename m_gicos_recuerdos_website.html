@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mágicos Recuerdos - Souvenirs & Ayuda Escolar</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pastel: {
+                            violet: '#A78BFA',
+                            violetDark: '#7C3AED',
+                            violetDeep: '#4C1D95',
+                            violetLight: '#F3E8FF',
+                            violetBorder: '#DDD6FE',
+                            pink: '#F472B6',
+                            pinkDark: '#DB2777',
+                            pinkLight: '#FCE7F3',
+                            pinkBorder: '#FBCFE8',
+                            yellow: '#FBBF24',
+                            yellowDark: '#D97706',
+                            yellowLight: '#FEF3C7',
+                            yellowBorder: '#FDE68A',
+                            bgSoft: '#FAF5FF',
+                            cardBg: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Quicksand', 'Inter', 'sans-serif'],
+                        matcha: ['DynaPuff', 'Bubblegum Sans', 'Fredoka', 'cursive', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@500;700;900&family=Bubblegum+Sans&family=Fredoka:wght@600;700&family=Quicksand:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .pastel-body { 
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #fdf4ff 0%, #f3e8ff 35%, #fce7f3 70%, #fef3c7 100%);
+            background-attachment: fixed;
+            color: #1e1b4b;
+            min-height: 100vh;
+            width: 100%;
+            position: relative;
+        }
+
+        .font-matcha-style {
+            font-family: 'DynaPuff', 'Bubblegum Sans', cursive;
+            letter-spacing: 0.03em;
+            text-shadow: 0 2px 10px rgba(167, 139, 250, 0.3);
+        }
+
+        .font-body { font-family: 'Inter', sans-serif; }
+
+        .glass-header {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(221, 214, 254, 0.6);
+        }
+
+        .glass-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card-hover:hover {
+            background: rgba(255, 255, 255, 0.98);
+            border-color: rgba(244, 114, 182, 0.6);
+            box-shadow: 0 12px 28px -6px rgba(167, 139, 250, 0.22);
+            transform: translateY(-3px);
+        }
+
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .soft-shadow {
+            box-shadow: 0 10px 30px -8px rgba(167, 139, 250, 0.25);
+        }
+
+        .touch-action-manipulation {
+            touch-action: manipulation;
+        }
+    </style>
+</head>
+<body class="pastel-body antialiased flex flex-col relative overflow-x-hidden pb-20 md:pb-0">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 glass-header border-b border-pastel-violetBorder/60 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2">
+            
+            <a href="#" class="flex items-center gap-2 sm:gap-3 group shrink min-w-0">
+                <img src="https://i.postimg.cc/ZnJk54bY/903394006530422075.jpg" 
+                     alt="Mágicos Recuerdos Logo" 
+                     class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl object-cover shadow-md group-hover:scale-105 transition-transform border border-white/60 shrink-0"
+                     onerror="this.onerror=null; this.src='https://placehold.co/100x100/F3E8FF/7C3AED?text=MR';">
+                <div class="truncate">
+                    <span class="text-xl sm:text-2xl lg:text-3xl font-matcha-style text-transparent bg-clip-text bg-gradient-to-r from-pastel-violetDark via-pastel-pinkDark to-pastel-yellowDark font-extrabold tracking-wide block leading-tight truncate">
+                        Mágicos Recuerdos
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-6 lg:space-x-8 font-semibold text-slate-700 text-sm">
+                <a href="#inicio" class="hover:text-pastel-violetDark transition">Inicio</a>
+                <a href="#catalogo" class="hover:text-pastel-pinkDark transition">Catálogo</a>
+                <a href="#nosotros" class="hover:text-pastel-violetDark transition">Nosotros</a>
+                <a href="#testimonios" class="hover:text-pastel-pinkDark transition">Reseñas</a>
+                <a href="#contacto" class="hover:text-pastel-yellowDark transition">Contacto</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
+                <button onclick="openCloudInspector()" class="relative p-2.5 sm:p-3 text-slate-800 hover:text-pastel-pinkDark bg-pastel-pinkLight hover:bg-pastel-violetLight rounded-xl sm:rounded-2xl transition border border-pastel-pinkBorder shadow-sm flex items-center gap-2 touch-action-manipulation" title="Ver lo que se carga en la nube">
+                    <i class="fa-solid fa-cloud text-sm sm:text-base text-pastel-pinkDark animate-pulse"></i>
+                    <span class="hidden lg:inline text-xs font-bold text-pastel-pinkDark">Inspector Nube</span>
+                </button>
+
+                <button onclick="toggleCart()" class="relative p-2.5 sm:p-3 text-slate-800 hover:text-pastel-violetDark bg-pastel-violetLight hover:bg-pastel-pinkLight rounded-xl sm:rounded-2xl transition border border-pastel-violetBorder shadow-sm flex items-center gap-2 touch-action-manipulation" aria-label="Abrir carrito">
+                    <i class="fa-solid fa-wand-magic-sparkles text-sm sm:text-base text-pastel-violetDark"></i>
+                    <span class="hidden sm:inline text-xs font-bold text-pastel-violetDeep">Mi Carrito</span>
+                    <span id="cart-count" class="bg-pastel-pinkDark text-white text-[10px] sm:text-xs font-bold w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center scale-0 transition-transform duration-300 -ml-1 shadow-sm">0</span>
+                </button>
+
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2.5 text-slate-700 bg-pastel-violetLight hover:bg-pastel-pinkLight rounded-xl border border-pastel-violetBorder focus:outline-none active:scale-95 transition touch-action-manipulation" aria-label="Menú">
+                    <i class="fa-solid fa-bars text-base sm:text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-pastel-violetBorder/50 bg-white/95 backdrop-blur-md px-6 py-4 space-y-3 shadow-xl font-semibold">
+            <a href="#inicio" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-pastel-violetDark border-b border-slate-100 text-sm">Inicio</a>
+            <a href="#catalogo" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-pastel-pinkDark border-b border-slate-100 text-sm">Catálogo</a>
+            <a href="#nosotros" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-pastel-violetDark border-b border-slate-100 text-sm">Nosotros</a>
+            <a href="#testimonios" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-pastel-pinkDark border-b border-slate-100 text-sm">Reseñas</a>
+            <a href="#contacto" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 hover:text-pastel-yellowDark text-sm">Contacto</a>
+        </div>
+    </header>
+
+    <main class="flex-grow relative z-10">
+        <!-- Hero Section -->
+        <section id="inicio" class="relative py-10 sm:py-16 lg:py-20 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                    
+                    <div class="lg:col-span-7 space-y-5 sm:space-y-6 text-center lg:text-left">
+                        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-bold bg-pastel-violetLight text-pastel-violetDeep border border-pastel-violetBorder shadow-sm">
+                            ✨ Souvenirs Personalizados & Útiles Escolares
+                        </span>
+                        
+                        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                            Hacemos inolvidables tus momentos <span class="text-transparent bg-clip-text bg-gradient-to-r from-pastel-violetDark via-pastel-pinkDark to-pastel-yellowDark underline decoration-pastel-pink decoration-wavy decoration-2">más especiales</span>.
+                        </h1>
+                        
+                        <p class="font-body text-xs sm:text-base text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                            Diseñamos recuerdos delicados e inolvidables para <strong>cumpleaños de 15, casamientos, egresaditos, graduaciones y eventos</strong>. Además, contamos con una línea encantadora de <strong>artículos de ayuda escolar</strong> para acompañar cada día de clases con color y alegría.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-1 sm:pt-2">
+                            <a href="#catalogo" class="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-pastel-violetDark via-pastel-pinkDark to-pastel-yellowDark hover:opacity-95 text-white font-bold rounded-2xl shadow-md transition flex items-center justify-center gap-2 text-xs sm:text-sm active:scale-98">
+                                <i class="fa-solid fa-gift"></i> Ver Catálogo Mágico
+                            </a>
+                            <a href="https://wa.me/5491171405817?text=¡Hola!%20Quisiera%20consultar%20por%20souvenirs%20o%20artículos%20escolares%20en%20Mágicos%20Recuerdos" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-white hover:bg-slate-50 border border-pastel-violetBorder text-slate-800 font-bold rounded-2xl shadow-sm transition flex items-center justify-center gap-2 text-xs sm:text-sm active:scale-98">
+                                <i class="fa-brands fa-whatsapp text-emerald-500 text-base sm:text-lg"></i> Consultar por WhatsApp
+                            </a>
+                        </div>
+
+                        <div class="pt-6 sm:pt-8 border-t border-pastel-violetBorder/60 grid grid-cols-3 gap-2 sm:gap-4 text-center sm:text-left">
+                            <div>
+                                <h4 class="font-extrabold text-base sm:text-2xl text-pastel-violetDark">15 Años & Bodas</h4>
+                                <p class="text-[10px] sm:text-xs font-body text-slate-500">Recuerdos Inolvidables</p>
+                            </div>
+                            <div>
+                                <h4 class="font-extrabold text-base sm:text-2xl text-pastel-pinkDark">Egresaditos</h4>
+                                <p class="text-[10px] sm:text-xs font-body text-slate-500">Kits & Diplomas</p>
+                            </div>
+                            <div>
+                                <h4 class="font-extrabold text-base sm:text-2xl text-pastel-yellowDark">Ayuda Escolar</h4>
+                                <p class="text-[10px] sm:text-xs font-body text-slate-500">Útiles & Papelería</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 relative mt-4 lg:mt-0">
+                        <div class="relative mx-auto max-w-sm sm:max-w-md lg:max-w-none">
+                            <div class="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-48 h-48 sm:w-64 sm:h-64 bg-pastel-pinkLight rounded-full mix-blend-multiply filter blur-2xl opacity-70"></div>
+                            <div class="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 w-48 h-48 sm:w-64 sm:h-64 bg-pastel-violetLight rounded-full mix-blend-multiply filter blur-2xl opacity-70"></div>
+                            
+                            <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Souvenirs y decoraciones para eventos" 
+                                 class="relative rounded-2xl sm:rounded-3xl soft-shadow object-cover w-full h-72 sm:h-96 lg:h-[420px] border-4 border-white"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/600x800/F3E8FF/7C3AED?text=Mágicos+Recuerdos';" />
+                            
+                            <div class="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 glass-card p-3 sm:p-4 rounded-xl sm:rounded-2xl shadow-lg border border-pastel-pinkBorder/80 flex items-center gap-2.5 sm:gap-3 max-w-[85%]">
+                                <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-pastel-yellowLight text-pastel-yellowDark flex items-center justify-center text-base sm:text-lg font-bold border border-pastel-yellowBorder shrink-0">
+                                    ✨
+                                </div>
+                                <div class="min-w-0">
+                                    <p class="text-[10px] sm:text-[11px] text-slate-500 font-body font-semibold truncate">100% Personalizado</p>
+                                    <p class="text-[11px] sm:text-xs font-bold text-slate-800 truncate">Nombres, Fechas & Temáticas</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Cards -->
+        <section class="py-10 bg-white/60 border-y border-pastel-violetBorder/40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="flex items-start space-x-4 p-5 rounded-2xl glass-card">
+                        <div class="w-12 h-12 rounded-xl bg-pastel-violetLight text-pastel-violetDark flex items-center justify-center shrink-0 text-xl font-bold shadow-sm border border-pastel-violetBorder">
+                            👑
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 mb-1 text-base">15 Años & Casamientos</h3>
+                            <p class="text-xs font-body text-slate-600 leading-relaxed">Souvenirs elegantes, libretas de firmas y llaveros acrílicos grabados con tus datos.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4 p-5 rounded-2xl glass-card">
+                        <div class="w-12 h-12 rounded-xl bg-pastel-pinkLight text-pastel-pinkDark flex items-center justify-center shrink-0 text-xl font-bold shadow-sm border border-pastel-pinkBorder">
+                            🎓
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 mb-1 text-base">Egresados & Graduación</h3>
+                            <p class="text-xs font-body text-slate-600 leading-relaxed">Diplomas, medallas, tazas y regalitos inolvidables para jardín, primaria y secundaria.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4 p-5 rounded-2xl glass-card">
+                        <div class="w-12 h-12 rounded-xl bg-pastel-yellowLight text-pastel-yellowDark flex items-center justify-center shrink-0 text-xl font-bold shadow-sm border border-pastel-yellowBorder">
+                            ✏️
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 mb-1 text-base">Artículos de Ayuda Escolar</h3>
+                            <p class="text-xs font-body text-slate-600 leading-relaxed">Kits para tareas, cartucheras personalizadas, etiquetas resistentes y organizadores de estudio.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Catalog Section -->
+        <section id="catalogo" class="py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span class="text-pastel-violetDark font-bold uppercase text-xs tracking-wider bg-pastel-violetLight px-3.5 py-1 rounded-full border border-pastel-violetBorder shadow-sm">
+                        Nuestros Productos
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-2">Catálogo Especializado</h2>
+                    <p class="font-body text-slate-600 text-sm sm:text-base">Elige tus recuerdos por evento o explora nuestros útiles de ayuda escolar.</p>
+                </div>
+
+                <!-- Category Filters & Search -->
+                <div class="flex flex-col md:flex-row gap-4 items-center justify-between mb-8">
+                    <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 hide-scrollbar" id="category-filters">
+                        <button onclick="filterCategory('todos')" class="filter-btn active px-5 py-2.5 rounded-2xl text-xs font-bold transition bg-gradient-to-r from-pastel-violetDark to-pastel-pinkDark text-white shadow-md border border-white/20" data-category="todos">
+                            ✨ Todos
+                        </button>
+                        <button onclick="filterCategory('15anos')" class="filter-btn px-5 py-2.5 rounded-2xl text-xs font-bold transition glass-card text-slate-700 hover:text-pastel-violetDark hover:border-pastel-violet" data-category="15anos">
+                            👑 15 Años
+                        </button>
+                        <button onclick="filterCategory('bodas')" class="filter-btn px-5 py-2.5 rounded-2xl text-xs font-bold transition glass-card text-slate-700 hover:text-pastel-violetDark hover:border-pastel-violet" data-category="bodas">
+                            💍 Casamientos
+                        </button>
+                        <button onclick="filterCategory('egresados')" class="filter-btn px-5 py-2.5 rounded-2xl text-xs font-bold transition glass-card text-slate-700 hover:text-pastel-pinkDark hover:border-pastel-pink" data-category="egresados">
+                            🎓 Graduados & Egresaditos
+                        </button>
+                        <button onclick="filterCategory('eventos')" class="filter-btn px-5 py-2.5 rounded-2xl text-xs font-bold transition glass-card text-slate-700 hover:text-pastel-pinkDark hover:border-pastel-pink" data-category="eventos">
+                            🌟 Eventos
+                        </button>
+                        <button onclick="filterCategory('escolar')" class="filter-btn px-5 py-2.5 rounded-2xl text-xs font-bold transition glass-card text-slate-700 hover:text-pastel-yellowDark hover:border-pastel-yellow" data-category="escolar">
+                            ✏️ Ayuda Escolar
+                        </button>
+                    </div>
+
+                    <div class="relative w-full md:w-72">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-pastel-violetDark text-sm"></i>
+                        <input type="text" id="search-input" onkeyup="searchProducts()" placeholder="Buscar producto o temática..." class="w-full pl-10 pr-4 py-2.5 bg-white border border-pastel-violetBorder rounded-2xl text-xs text-slate-800 placeholder-slate-400 font-body focus:outline-none focus:ring-2 focus:ring-pastel-violetDark shadow-sm transition">
+                    </div>
+                </div>
+
+                <!-- Product Grid Container -->
+                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Dynamic Products -->
+                </div>
+
+                <div id="no-products" class="hidden text-center py-12">
+                    <p class="text-4xl mb-2">🪄</p>
+                    <p class="text-slate-800 font-bold text-base">No encontramos productos con esa búsqueda</p>
+                    <p class="text-xs font-body text-slate-500 mt-1">Prueba seleccionando otra categoría o palabra clave.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="nosotros" class="py-16 bg-white/60 border-y border-pastel-violetBorder/40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80" 
+                             alt="Taller Mágicos Recuerdos" 
+                             class="rounded-3xl soft-shadow w-full h-[380px] object-cover border-4 border-white"
+                             onerror="this.onerror=null; this.src='https://placehold.co/800x600/FCE7F3/DB2777?text=Mágicos+Recuerdos';" />
+                        <div class="absolute -bottom-6 -right-6 bg-white text-slate-800 p-5 rounded-3xl shadow-xl hidden sm:block max-w-xs border border-pastel-pinkBorder">
+                            <p class="text-lg font-bold text-pastel-violetDark mb-1">Dedicación & Amor ✨</p>
+                            <p class="text-xs font-body text-slate-600">Cada pedido es elaborado cuidando cada detalle para que tu fiesta o kit escolar sea inolvidable.</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-5">
+                        <span class="text-pastel-pinkDark font-bold uppercase text-xs tracking-wider bg-pastel-pinkLight px-3.5 py-1 rounded-full border border-pastel-pinkBorder">Nuestra Historia</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Transformamos celebraciones y clases en momentos mágicos</h2>
+                        <p class="font-body text-slate-600 text-sm leading-relaxed">
+                            En <strong class="text-pastel-violetDark">Mágicos Recuerdos</strong> nacimos con la ilusión de acompañar a las familias en sus festejos más queridos: la emoción de un <strong>Cumpleaños de 15</strong>, la calidez de un <strong>Casamiento</strong>, la alegría de los <strong>Egresaditos y Graduados</strong>, y la ternura de cada evento familiar.
+                        </p>
+                        <p class="font-body text-slate-600 text-sm leading-relaxed">
+                            Además, nos encanta apoyar la etapa escolar con nuestra línea de <strong>artículos de ayuda escolar</strong>, pensada para organizar el día a día escolar con color, practicidad y diseños únicos.
+                        </p>
+
+                        <div class="pt-2 flex flex-wrap gap-2.5">
+                            <div class="flex items-center space-x-2 glass-card px-3.5 py-2 rounded-xl text-xs font-bold text-pastel-violetDark">
+                                <span>👑</span> <span>Diseño Personalizado</span>
+                            </div>
+                            <div class="flex items-center space-x-2 glass-card px-3.5 py-2 rounded-xl text-xs font-bold text-pastel-pinkDark">
+                                <span>🎓</span> <span>Kits para Egresaditos</span>
+                            </div>
+                            <div class="flex items-center space-x-2 glass-card px-3.5 py-2 rounded-xl text-xs font-bold text-pastel-yellowDark">
+                                <span>✏️</span> <span>Insumos de Ayuda Escolar</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonios" class="py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                    <div>
+                        <span class="text-pastel-violetDark font-bold uppercase text-xs tracking-wider bg-pastel-violetLight px-3.5 py-1 rounded-full border border-pastel-violetBorder">Reseñas de Clientes</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-2">Lo que dicen quienes nos eligen</h2>
+                        <p class="font-body text-slate-600 text-sm sm:text-base">Tu opinión nos llena de alegría y nos ayuda a seguir creando recuerdos mágicos.</p>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-3">
+                        <div class="glass-card px-4 py-2.5 rounded-2xl flex items-center gap-2 border border-pastel-violetBorder shadow-sm">
+                            <span id="avg-rating-value" class="text-lg font-extrabold text-pastel-violetDark">5.0</span>
+                            <div class="flex text-amber-400 text-xs sm:text-sm" id="avg-rating-stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <span id="total-reviews-count" class="text-xs font-body text-slate-500">(3 reseñas)</span>
+                        </div>
+
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="scrollReviews(-1)" class="w-10 h-10 rounded-2xl bg-white hover:bg-pastel-violetLight text-pastel-violetDark border border-pastel-violetBorder flex items-center justify-center transition shadow-sm active:scale-95 touch-action-manipulation" aria-label="Reseñas anteriores">
+                                <i class="fa-solid fa-chevron-left text-xs"></i>
+                            </button>
+                            <button onclick="scrollReviews(1)" class="w-10 h-10 rounded-2xl bg-white hover:bg-pastel-violetLight text-pastel-violetDark border border-pastel-violetBorder flex items-center justify-center transition shadow-sm active:scale-95 touch-action-manipulation" aria-label="Siguientes reseñas">
+                                <i class="fa-solid fa-chevron-right text-xs"></i>
+                            </button>
+                        </div>
+
+                        <button onclick="openReviewModal()" class="px-5 py-3 bg-gradient-to-r from-pastel-pinkDark to-pastel-violetDark text-white font-bold text-xs rounded-2xl shadow-md hover:opacity-95 transition flex items-center gap-2 active:scale-95 touch-action-manipulation">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            <span>Escribir una Reseña</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Live Sync Indicator -->
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4 bg-pastel-violetLight/70 p-3 rounded-2xl border border-pastel-violetBorder">
+                    <div class="flex items-center gap-2 text-[11px] font-body text-pastel-violetDark">
+                        <span id="cloud-status-indicator" class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span id="cloud-status-text" class="font-bold">Nube Sincronizada</span>
+                    </div>
+                    <button onclick="openCloudInspector()" class="text-xs font-bold text-pastel-violetDark hover:text-pastel-pinkDark underline flex items-center gap-1">
+                        <i class="fa-solid fa-database"></i>
+                        <span>Abrir Inspector de Datos Guardados</span>
+                    </button>
+                </div>
+
+                <!-- Reviews Carousel -->
+                <div class="relative">
+                    <div id="reviews-grid" class="flex items-stretch gap-5 overflow-x-auto snap-x snap-mandatory hide-scrollbar scroll-smooth py-2 px-1">
+                        <!-- Dynamic Review Cards -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal Form: Add Review -->
+        <div id="review-modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-[99999] opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+            <div class="glass-card bg-white/95 w-full max-w-lg rounded-3xl p-6 sm:p-8 border border-pastel-violetBorder shadow-2xl relative transform transition-transform duration-300 scale-95" id="review-modal-content">
+                <button onclick="closeReviewModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-pastel-violetLight text-slate-500 hover:text-slate-800 flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark text-base"></i>
+                </button>
+
+                <div class="text-center mb-6">
+                    <span class="text-2xl mb-1 inline-block">✨</span>
+                    <h3 class="text-xl font-extrabold text-slate-900">Escribe tu Reseña</h3>
+                    <p class="text-xs font-body text-slate-500 mt-1">Comparte tu experiencia con tus souvenirs o productos escolares.</p>
+                </div>
+
+                <form id="add-review-form" onsubmit="handleReviewSubmit(event)" class="space-y-4 font-body">
+                    <input type="hidden" id="review-rating" value="5">
+                    
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 text-center">Puntuación</label>
+                        <div class="flex items-center justify-center space-x-2" id="star-picker">
+                            <button type="button" onclick="setStarRating(1)" class="star-btn text-amber-400 text-2xl transition hover:scale-110 focus:outline-none" data-value="1"><i class="fa-solid fa-star"></i></button>
+                            <button type="button" onclick="setStarRating(2)" class="star-btn text-amber-400 text-2xl transition hover:scale-110 focus:outline-none" data-value="2"><i class="fa-solid fa-star"></i></button>
+                            <button type="button" onclick="setStarRating(3)" class="star-btn text-amber-400 text-2xl transition hover:scale-110 focus:outline-none" data-value="3"><i class="fa-solid fa-star"></i></button>
+                            <button type="button" onclick="setStarRating(4)" class="star-btn text-amber-400 text-2xl transition hover:scale-110 focus:outline-none" data-value="4"><i class="fa-solid fa-star"></i></button>
+                            <button type="button" onclick="setStarRating(5)" class="star-btn text-amber-400 text-2xl transition hover:scale-110 focus:outline-none" data-value="5"><i class="fa-solid fa-star"></i></button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="review-name" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Tu Nombre</label>
+                        <input type="text" id="review-name" required placeholder="Ej. Ana María" class="w-full px-4 py-3 bg-white border border-pastel-violetBorder rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-pastel-violetDark">
+                    </div>
+
+                    <div>
+                        <label for="review-role" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Evento / Detalle (Opcional)</label>
+                        <input type="text" id="review-role" placeholder="Ej. Mamá de Quinceañera / Egresaditos 2026" class="w-full px-4 py-3 bg-white border border-pastel-violetBorder rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-pastel-violetDark">
+                    </div>
+
+                    <div>
+                        <label for="review-comment" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Tu Experiencia</label>
+                        <textarea id="review-comment" rows="3" required placeholder="Cuéntanos qué te parecieron los souvenirs o productos escolares..." class="w-full px-4 py-3 bg-white border border-pastel-violetBorder rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-pastel-violetDark"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-pastel-pinkDark to-pastel-violetDark text-white font-bold rounded-xl shadow-md hover:opacity-95 transition flex items-center justify-center gap-2 text-xs active:scale-98">
+                        <i class="fa-solid fa-paper-plane"></i> Publicar Reseña
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Cloud Inspector Modal -->
+        <div id="cloud-inspector-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[99999] opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-3 sm:p-5">
+            <div class="glass-card bg-white/98 w-full max-w-3xl max-h-[90vh] rounded-3xl p-5 sm:p-7 border border-pastel-violetBorder shadow-2xl relative flex flex-col transform transition-transform duration-300 scale-95" id="cloud-inspector-content">
+                
+                <div class="flex items-center justify-between pb-4 border-b border-pastel-violetBorder/60 shrink-0">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-2xl bg-pastel-violetLight text-pastel-violetDark flex items-center justify-center text-lg border border-pastel-violetBorder shadow-sm">
+                            <i class="fa-solid fa-cloud-arrow-down"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-extrabold text-slate-900 leading-tight">Inspector de Datos Guardados</h3>
+                            <p class="text-xs font-body text-slate-500">Visualizador en tiempo real de registros almacenados</p>
+                        </div>
+                    </div>
+                    <button onclick="closeCloudInspector()" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition">
+                        <i class="fa-solid fa-xmark text-base"></i>
+                    </button>
+                </div>
+
+                <div class="py-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-body shrink-0 border-b border-pastel-violetBorder/40">
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                        <span class="text-slate-400 block text-[10px] uppercase font-bold">Estado Conexión</span>
+                        <span id="diag-connection-status" class="font-bold text-emerald-600">🟢 Conectado</span>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 truncate">
+                        <span class="text-slate-400 block text-[10px] uppercase font-bold">ID Aplicación (App ID)</span>
+                        <span id="diag-app-id" class="font-mono text-slate-800 font-semibold truncate block">...</span>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                        <span class="text-slate-400 block text-[10px] uppercase font-bold">Registros Sincronizados</span>
+                        <span id="diag-total-docs" class="font-bold text-pastel-violetDark">0 Reseñas</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-between gap-2 py-3 shrink-0">
+                    <div class="flex items-center gap-2">
+                        <button onclick="switchCloudTab('reviews')" id="tab-btn-reviews" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-pastel-violetDark text-white shadow-sm transition">
+                            <i class="fa-solid fa-comments"></i> Reseñas
+                        </button>
+                        <button onclick="switchCloudTab('logs')" id="tab-btn-logs" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+                            <i class="fa-solid fa-list-check"></i> Historial de Sync
+                        </button>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button onclick="addTestCloudReview()" class="px-3 py-1.5 bg-pastel-pinkLight hover:bg-pastel-pinkDark hover:text-white text-pastel-pinkDark text-xs font-bold rounded-xl transition border border-pastel-pinkBorder flex items-center gap-1.5">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>+ Crear Prueba</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex-grow overflow-y-auto space-y-3 pr-1 py-2 font-body text-xs" id="cloud-data-view">
+                    <!-- Dynamic Data Content -->
+                </div>
+
+                <div class="pt-3 border-t border-pastel-violetBorder/60 flex items-center justify-between text-[11px] text-slate-500 font-body shrink-0">
+                    <span>Mágicos Recuerdos Website</span>
+                    <button onclick="closeCloudInspector()" class="px-4 py-2 bg-slate-800 text-white font-bold rounded-xl hover:bg-slate-700 transition">Cerrar Inspector</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <section id="contacto" class="py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                    
+                    <div class="lg:col-span-5 space-y-5">
+                        <span class="text-pastel-yellowDark font-bold uppercase text-xs tracking-wider bg-pastel-yellowLight px-3.5 py-1 rounded-full border border-pastel-yellowBorder">Contacto</span>
+                        <h2 class="text-3xl font-extrabold text-slate-900">¿Tienes dudas o deseas un diseño a medida?</h2>
+                        <p class="font-body text-slate-600 text-xs leading-relaxed">
+                            Estamos para asesorarte con las mejores opciones en recuerdos para tus festejos y artículos escolares.
+                        </p>
+
+                        <div class="space-y-3 pt-2">
+                            <a href="https://wa.me/5491171405817" target="_blank" class="flex items-center space-x-4 p-4 glass-card glass-card-hover rounded-2xl group">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 border border-emerald-200 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-xs">WhatsApp Naty</h4>
+                                    <p class="text-[11px] font-body text-slate-500">+54 9 11 7140-5817</p>
+                                </div>
+                            </a>
+
+                            <a href="https://wa.me/5491159136501" target="_blank" class="flex items-center space-x-4 p-4 glass-card glass-card-hover rounded-2xl group">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 border border-emerald-200 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-xs">WhatsApp Eve</h4>
+                                    <p class="text-[11px] font-body text-slate-500">+54 9 11 5913-6501</p>
+                                </div>
+                            </a>
+
+                            <div class="flex items-center space-x-4 p-4 glass-card rounded-2xl">
+                                <div class="w-10 h-10 rounded-xl bg-pastel-pinkLight text-pastel-pinkDark border border-pastel-pinkBorder flex items-center justify-center text-lg">
+                                    <i class="fa-regular fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-xs">Correo Electrónico</h4>
+                                    <p class="text-[11px] font-body text-slate-500">magicos_recuerdos23@gmail.com</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-4 p-4 glass-card rounded-2xl">
+                                <div class="w-10 h-10 rounded-xl bg-pastel-yellowLight text-pastel-yellowDark border border-pastel-yellowBorder flex items-center justify-center text-lg">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-xs">Taller de Diseño</h4>
+                                    <p class="text-[11px] font-body text-slate-500">Buenos Aires, Argentina (Atención online & envíos)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 glass-card p-6 sm:p-8 rounded-3xl border border-pastel-violetBorder shadow-md">
+                        <h3 class="text-xl font-extrabold text-slate-900 mb-5">Envíanos un mensaje</h3>
+                        <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4 font-body">
+                            <div>
+                                <label for="contact-name" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Nombre Completo</label>
+                                <input type="text" id="contact-name" required placeholder="Ej. Florencia Gómez" class="w-full px-4 py-3 bg-white border border-pastel-violetBorder rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-pastel-violetDark">
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="contact-email" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Email</label>
+                                    <input type="email" id="contact-email" required placeholder="tu@email.com" class="w-full px-4 py-3 bg-white border border-pastel-violetBorder rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-pastel-violetDark">
+                                </div>
+                                <div>
+                                    <label for="contact-phone" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Teléfono / WhatsApp</label>
+                                    <input type="tel" id="contact-phone" placeholder="11 2345 6789" class="w-full px-4 py-3 bg-white border border-pastel-violetBorder rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-pastel-violetDark">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="contact-message" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Detalle de tu evento o consulta</label>
+                                <textarea id="contact-message" rows="4" required placeholder="Ej. Quisiera saber precios de souvenirs para 15 años en tonos violeta y rosa para 80 personas..." class="w-full px-4 py-3 bg-white border border-pastel-violetBorder rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-pastel-violetDark"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-pastel-violetDark via-pastel-pinkDark to-pastel-yellowDark text-white font-bold rounded-xl hover:opacity-95 transition flex items-center justify-center gap-2 text-xs shadow-md active:scale-98">
+                                <i class="fa-solid fa-paper-plane"></i> Enviar Consulta
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white/80 text-slate-600 py-10 border-t border-pastel-violetBorder backdrop-blur-md relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <img src="https://i.postimg.cc/ZnJk54bY/903394006530422075.jpg" alt="Mágicos Recuerdos Logo" class="w-8 h-8 rounded-lg object-cover shadow-sm border border-pastel-violetBorder shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/100x100/F3E8FF/7C3AED?text=MR';">
+                        <span class="text-2xl font-matcha-style text-transparent bg-clip-text bg-gradient-to-r from-pastel-violetDark via-pastel-pinkDark to-pastel-yellowDark font-extrabold">
+                            MÁGICOS RECUERDOS
+                        </span>
+                    </div>
+                    <p class="text-xs font-body text-slate-500 leading-relaxed">
+                        Souvenirs para Cumpleaños de 15, Bodas, Egresaditos y Eventos. Línea exclusiva de Artículos de Ayuda Escolar.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-slate-900 text-xs font-bold uppercase tracking-wider mb-3">Categorías</h4>
+                    <ul class="space-y-2 text-xs font-body text-slate-600">
+                        <li><a href="#catalogo" onclick="filterCategory('15anos')" class="hover:text-pastel-pinkDark transition">Souvenirs 15 Años</a></li>
+                        <li><a href="#catalogo" onclick="filterCategory('bodas')" class="hover:text-pastel-pinkDark transition">Souvenirs Casamientos</a></li>
+                        <li><a href="#catalogo" onclick="filterCategory('egresados')" class="hover:text-pastel-pinkDark transition">Graduaciones & Egresados</a></li>
+                        <li><a href="#catalogo" onclick="filterCategory('escolar')" class="hover:text-pastel-pinkDark transition">Ayuda Escolar & Útiles</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-slate-900 text-xs font-bold uppercase tracking-wider mb-3">Redes Sociales</h4>
+                    <div class="flex space-x-3">
+                        <a href="https://www.instagram.com/magicosrecuerdos_22?utm_source=qr&stkn=MThtNWkzcmQxcDdjOQ==" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-xl bg-pastel-violetLight hover:bg-pastel-violetDark hover:text-white transition flex items-center justify-center text-pastel-violetDark border border-pastel-violetBorder" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/1FHFsXSsMr/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-xl bg-pastel-pinkLight hover:bg-pastel-pinkDark hover:text-white transition flex items-center justify-center text-pastel-pinkDark border border-pastel-pinkBorder" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-xl bg-pastel-yellowLight hover:bg-pastel-yellowDark hover:text-white transition flex items-center justify-center text-pastel-yellowDark border border-pastel-yellowBorder" aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-slate-900 text-xs font-bold uppercase tracking-wider mb-3">Contacto Directo</h4>
+                    <p class="text-xs font-body text-slate-500 mb-1">📱 Naty: 11 7140-5817</p>
+                    <p class="text-xs font-body text-slate-500 mb-1">📱 Eve: 11 5913-6501</p>
+                    <p class="text-xs font-body text-slate-500">© 2026 Mágicos Recuerdos.</p>
+                </div>
+            </div>
+
+            <div class="pt-6 border-t border-pastel-violetBorder/60 text-center text-xs font-body text-slate-500">
+                Diseño delicado en tonos pasteles Violeta, Rosa y Amarillo ✨
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Overlay & Drawer -->
+    <div id="cart-drawer-overlay" onclick="toggleCart()" class="fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-[99990] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+    <aside id="cart-drawer" class="fixed top-0 right-0 w-full sm:w-96 h-full bg-white z-[99999] shadow-2xl translate-x-full transition-transform duration-300 ease-in-out flex flex-col border-l border-pastel-violetBorder">
+        <div class="p-4 border-b border-pastel-violetBorder flex items-center justify-between bg-pastel-violetLight">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-wand-magic-sparkles text-pastel-violetDark"></i>
+                <h3 class="font-extrabold text-slate-900 text-sm">Tu Carrito Mágico</h3>
+            </div>
+            <button onclick="toggleCart()" class="p-2 text-slate-500 hover:text-slate-800 rounded-full">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+
+        <div id="cart-items" class="flex-grow overflow-y-auto p-4 space-y-3 font-body">
+            <div id="empty-cart-msg" class="text-center py-16 text-slate-400">
+                <p class="text-4xl mb-2">🪄</p>
+                <p class="text-xs font-bold text-slate-700">Tu carrito está vacío</p>
+                <p class="text-[11px] text-slate-500 mt-1">Explora nuestros souvenirs y útiles para agregar favoritos.</p>
+                <a href="#catalogo" onclick="toggleCart()" class="inline-block mt-4 text-xs text-pastel-pinkDark font-bold hover:underline">Ir al catálogo</a>
+            </div>
+        </div>
+
+        <div class="p-4 border-t border-pastel-violetBorder bg-slate-50 space-y-3 font-body">
+            <div class="flex justify-between items-center">
+                <span class="text-slate-600 font-semibold text-xs">Total estimado</span>
+                <span id="cart-total" class="text-base font-bold text-pastel-violetDark">$0</span>
+            </div>
+            <p class="text-[10px] text-slate-500">Personalización de nombres y fechas se coordina directamente por WhatsApp.</p>
+            
+            <button onclick="checkoutWhatsApp()" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition flex items-center justify-center gap-2 shadow-md text-xs active:scale-98">
+                <i class="fa-brands fa-whatsapp text-base"></i> Enviar pedido por WhatsApp
+            </button>
+        </div>
+    </aside>
+
+    <!-- Mobile Quick Action Bar -->
+    <div class="md:hidden fixed bottom-4 right-4 left-4 z-[9980] flex items-center gap-2 pointer-events-none">
+        <a href="https://wa.me/5491171405817?text=¡Hola!%20Quisiera%20consultar%20por%20souvenirs%20o%20artículos%20escolares%20en%20Mágicos%20Recuerdos" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="pointer-events-auto flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-2xl shadow-xl flex items-center justify-center gap-2 text-xs border border-emerald-400/30 active:scale-95 transition-all">
+            <i class="fa-brands fa-whatsapp text-base"></i>
+            <span>WhatsApp Directo</span>
+        </a>
+        <button onclick="toggleCart()" 
+                class="pointer-events-auto relative bg-pastel-violetDark hover:bg-pastel-violet text-white p-3 rounded-2xl shadow-xl flex items-center justify-center active:scale-95 transition-all"
+                aria-label="Abrir Carrito en móvil">
+            <i class="fa-solid fa-wand-magic-sparkles text-white text-base"></i>
+            <span id="mobile-floating-cart-count" class="absolute -top-1.5 -right-1.5 bg-pastel-pinkDark text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white scale-0 transition-transform duration-300">0</span>
+        </button>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="fixed bottom-20 md:bottom-5 right-4 left-4 md:left-auto md:right-5 z-[100000] flex flex-col space-y-2 pointer-events-none"></div>
+
+    <!-- Main Logic Script -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Environment variables fallbacks for GitHub Pages / static hosting
+        const appId = typeof window.__app_id !== 'undefined' ? window.__app_id : 'magicos-recuerdos-app';
+
+        const firebaseConfig = typeof window.__firebase_config !== 'undefined' 
+            ? JSON.parse(window.__firebase_config) 
+            : null;
+
+        let app, auth, db;
+        let currentUser = null;
+        let cloudLogs = [];
+        let currentInspectorTab = 'reviews';
+
+        function addCloudLog(type, message) {
+            const timeStr = new Date().toLocaleTimeString();
+            cloudLogs.unshift({ time: timeStr, type, message });
+            if (cloudLogs.length > 50) cloudLogs.pop();
+            if (currentInspectorTab === 'logs') {
+                renderCloudInspectorContent();
+            }
+        }
+
+        if (firebaseConfig) {
+            try {
+                app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
+                addCloudLog('info', `Firebase inicializado con App ID: ${appId}`);
+            } catch (err) {
+                console.warn("Error al inicializar Firebase, usando modo LocalStorage:", err);
+                addCloudLog('error', `Error al inicializar Firebase: ${err.message}`);
+            }
+        } else {
+            addCloudLog('info', 'Ejecutando en GitHub / Hosting estático en modo LocalStorage');
+        }
+
+        const products = [
+            {
+                id: 1,
+                name: "Llavero Acrílico 15 Años Galaxy",
+                category: "15anos",
+                price: 1200,
+                image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+                description: "Llavero acrílico transparente personalizado con nombre, fecha y detalles delicados en foil.",
+                tag: "15 Años"
+            },
+            {
+                id: 2,
+                name: "Libro de Firmas Mágico 15 Años",
+                category: "15anos",
+                price: 18500,
+                image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80",
+                description: "Encuadernación artesanal tapa dura en tono pastel con grabado en foil holográfico.",
+                tag: "15 Años"
+            },
+            {
+                id: 3,
+                name: "Vela Aromática de Soja Bodas",
+                category: "bodas",
+                price: 2400,
+                image: "https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=600&q=80",
+                description: "Frasco de vidrio con cera de soja perfumada, tapa de madera y etiqueta personalizada.",
+                tag: "Casamientos"
+            },
+            {
+                id: 4,
+                name: "Árbol de Huellas Bodas de Ensueño",
+                category: "bodas",
+                price: 14500,
+                image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80",
+                description: "Cuadro de madera con lámina para que tus invitados dejen sus huellas con tintas pastel.",
+                tag: "Casamientos"
+            },
+            {
+                id: 5,
+                name: "Kit Egresaditos Jardín (Taza + Diploma)",
+                category: "egresados",
+                price: 5800,
+                image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80",
+                description: "Taza de polímero irrompible personalizada con nombre de la sala y diploma impreso.",
+                tag: "Egresaditos"
+            },
+            {
+                id: 6,
+                name: "Medalla Grabada de Graduación",
+                category: "egresados",
+                price: 1950,
+                image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80",
+                description: "Medalla metálica brillante con cinta personalizada de egresados para nivel primario o secundario.",
+                tag: "Graduaciones"
+            },
+            {
+                id: 7,
+                name: "Estampa Souvenir Bautismo / Comunión",
+                category: "eventos",
+                price: 850,
+                image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80",
+                description: "Tarjetas souvenir impresas en papel ilustración de alto gramaje con acabado satinado suave.",
+                tag: "Eventos"
+            },
+            {
+                id: 8,
+                name: "Cajitas Golosineras Mágicas x10",
+                category: "eventos",
+                price: 6500,
+                image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=600&q=80",
+                description: "Cajitas temáticas con relieve 3D ideales para sorpresitas de cumpleaños infantiles.",
+                tag: "Eventos"
+            },
+            {
+                id: 9,
+                name: "Kit Ayuda Escolar Completo Pastel",
+                category: "escolar",
+                price: 12900,
+                image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80",
+                description: "Incluye libreta, etiquetas impermeables, cartuchera personalizada y set de rotuladores.",
+                tag: "Ayuda Escolar"
+            },
+            {
+                id: 10,
+                name: "Etiquetas Escolares Lavables x30",
+                category: "escolar",
+                price: 3800,
+                image: "https://images.unsplash.com/photo-1584697964409-3a28362b17a1?auto=format&fit=crop&w=600&q=80",
+                description: "Stickers ultra resistentes al agua para marcapáginas, tupper, viandas y útiles.",
+                tag: "Ayuda Escolar"
+            },
+            {
+                id: 11,
+                name: "Agenda de Estudio y Organizador",
+                category: "escolar",
+                price: 7200,
+                image: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=600&q=80",
+                description: "Agenda perpetua con planificador semanal, stickers decorativos y seguimiento de tareas.",
+                tag: "Ayuda Escolar"
+            },
+            {
+                id: 12,
+                name: "Cartuchera Mágica de Tela Personalizada",
+                category: "escolar",
+                price: 6400,
+                image: "https://images.unsplash.com/photo-1585336261026-8f5786372969?auto=format&fit=crop&w=600&q=80",
+                description: "Cartuchera desplegable de gran capacidad lavable con estampado de nombre y temática favorita.",
+                tag: "Ayuda Escolar"
+            }
+        ];
+
+        let cart = [];
+
+        function renderProducts(itemsToRender = products) {
+            const grid = document.getElementById('product-grid');
+            const noProductsMsg = document.getElementById('no-products');
+
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            if (itemsToRender.length === 0) {
+                noProductsMsg.classList.remove('hidden');
+                return;
+            } else {
+                noProductsMsg.classList.add('hidden');
+            }
+
+            itemsToRender.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'glass-card glass-card-hover rounded-3xl overflow-hidden flex flex-col justify-between border border-pastel-violetBorder/60 group';
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F3E8FF/7C3AED?text=Mágicos+Recuerdos';">
+                            <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-pastel-violetDark text-[10px] font-bold px-3 py-1 rounded-full border border-pastel-violetBorder shadow-sm">
+                                ${product.tag}
+                            </span>
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <h3 class="font-bold text-slate-800 text-sm sm:text-base group-hover:text-pastel-violetDark transition">${product.name}</h3>
+                            <p class="font-body text-slate-600 text-xs leading-relaxed line-clamp-2">${product.description}</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 flex items-center justify-between gap-2 mt-4">
+                        <div>
+                            <span class="text-[10px] font-body text-slate-500 block">Precio unidad</span>
+                            <span class="text-base sm:text-lg font-extrabold text-pastel-violetDark">$${product.price.toLocaleString('es-AR')}</span>
+                        </div>
+                        <button onclick="addToCart(${product.id})" class="px-4 py-2.5 bg-gradient-to-r from-pastel-violetDark to-pastel-pinkDark hover:opacity-95 text-white font-bold text-xs rounded-xl shadow-sm transition active:scale-95 flex items-center gap-1.5 touch-action-manipulation">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Agregar</span>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterCategory(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-category') === category) {
+                    btn.className = 'filter-btn active px-5 py-2.5 rounded-2xl text-xs font-bold transition bg-gradient-to-r from-pastel-violetDark to-pastel-pinkDark text-white shadow-md border border-white/20';
+                } else {
+                    btn.className = 'filter-btn px-5 py-2.5 rounded-2xl text-xs font-bold transition glass-card text-slate-700 hover:text-pastel-violetDark hover:border-pastel-violet';
+                }
+            });
+
+            if (category === 'todos') {
+                renderProducts(products);
+            } else {
+                const filtered = products.filter(p => p.category === category);
+                renderProducts(filtered);
+            }
+        }
+
+        function searchProducts() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const filtered = products.filter(p => 
+                p.name.toLowerCase().includes(query) || 
+                p.description.toLowerCase().includes(query) ||
+                p.tag.toLowerCase().includes(query)
+            );
+            renderProducts(filtered);
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartUI();
+            showToast(`¡${product.name} agregado al carrito! ✨`);
+        }
+
+        function updateCartQuantity(productId, change) {
+            const item = cart.find(i => i.id === productId);
+            if (!item) return;
+
+            item.quantity += change;
+            if (item.quantity <= 0) {
+                cart = cart.filter(i => i.id !== productId);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const emptyCartMsg = document.getElementById('empty-cart-msg');
+            const cartCountBadge = document.getElementById('cart-count');
+            const mobileFloatingCartCount = document.getElementById('mobile-floating-cart-count');
+            const cartTotalSpan = document.getElementById('cart-total');
+
+            const totalQty = cart.reduce((acc, i) => acc + i.quantity, 0);
+            
+            if (cartCountBadge) cartCountBadge.textContent = totalQty;
+            if (mobileFloatingCartCount) mobileFloatingCartCount.textContent = totalQty;
+            
+            if (totalQty > 0) {
+                if (cartCountBadge) cartCountBadge.classList.remove('scale-0');
+                if (mobileFloatingCartCount) mobileFloatingCartCount.classList.remove('scale-0');
+            } else {
+                if (cartCountBadge) cartCountBadge.classList.add('scale-0');
+                if (mobileFloatingCartCount) mobileFloatingCartCount.classList.add('scale-0');
+            }
+
+            const totalPrice = cart.reduce((acc, i) => acc + (i.price * i.quantity), 0);
+            if (cartTotalSpan) cartTotalSpan.textContent = `$${totalPrice.toLocaleString('es-AR')}`;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '';
+                if (emptyCartMsg) cartItemsContainer.appendChild(emptyCartMsg);
+            } else {
+                cartItemsContainer.innerHTML = '';
+                cart.forEach(item => {
+                    const itemEl = document.createElement('div');
+                    itemEl.className = 'flex items-center gap-3 p-3 bg-white rounded-2xl border border-pastel-violetBorder shadow-sm';
+                    itemEl.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-cover rounded-xl shrink-0">
+                        <div class="flex-grow min-w-0">
+                            <h4 class="font-bold text-xs text-slate-800 truncate">${item.name}</h4>
+                            <p class="text-xs font-bold text-pastel-violetDark mt-0.5">$${(item.price * item.quantity).toLocaleString('es-AR')}</p>
+                            <div class="flex items-center gap-2 mt-1">
+                                <button onclick="updateCartQuantity(${item.id}, -1)" class="w-6 h-6 rounded-lg bg-pastel-violetLight border border-pastel-violetBorder text-pastel-violetDark font-bold flex items-center justify-center text-xs active:scale-95">-</button>
+                                <span class="text-xs font-bold px-1 text-slate-800">${item.quantity}</span>
+                                <button onclick="updateCartQuantity(${item.id}, 1)" class="w-6 h-6 rounded-lg bg-pastel-violetLight border border-pastel-violetBorder text-pastel-violetDark font-bold flex items-center justify-center text-xs active:scale-95">+</button>
+                            </div>
+                        </div>
+                        <button onclick="updateCartQuantity(${item.id}, -${item.quantity})" class="text-slate-400 hover:text-red-500 p-2">
+                            <i class="fa-solid fa-trash-can text-xs"></i>
+                        </button>
+                    `;
+                    cartItemsContainer.appendChild(itemEl);
+                });
+            }
+        }
+
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-drawer-overlay');
+            
+            if (drawer.classList.contains('translate-x-full')) {
+                drawer.classList.remove('translate-x-full');
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                drawer.classList.add('translate-x-full');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                showToast('Tu carrito está vacío. Agrega productos para realizar tu pedido.');
+                return;
+            }
+
+            let text = '¡Hola Mágicos Recuerdos! 🪄 Quisiera consultar por el siguiente pedido:\n\n';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const subtotal = item.price * item.quantity;
+                total += subtotal;
+                text += `${index + 1}. *${item.name}* (x${item.quantity}) - $${subtotal.toLocaleString('es-AR')}\n`;
+            });
+
+            text += `\n💰 *Total Estimado:* $${total.toLocaleString('es-AR')}\n\n`;
+            text += '¿Podrían darme información de fechas de entrega, personalización de nombres y medios de pago? ¡Muchas gracias!';
+
+            const encodedText = encodeURIComponent(text);
+            const phoneNumber = '5491171405817';
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            showToast('¡Mensaje enviado con éxito! Te responderemos muy pronto. ✨');
+            event.target.reset();
+        }
+
+        const initialReviews = [
+            {
+                id: 'init-1',
+                name: "Valeria P.",
+                role: "Mamá de Quinceañera",
+                rating: 5,
+                comment: "Encargué los souvenirs y el libro de firmas para los 15 de mi hija. Quedaron hermosos, los colores pasteles y los detalles le encantaron a todos.",
+                date: "Hace 2 días",
+                createdAt: Date.now() - 172800000
+            },
+            {
+                id: 'init-2',
+                name: "Mariana C.",
+                role: "Comisión de Padres Jardín",
+                rating: 5,
+                comment: "Compramos los diplomas y tazas de egresaditos para la sala de 5 del jardín. Excelente calidad, empaque hermoso y súper puntuales.",
+                date: "Hace 1 semana",
+                createdAt: Date.now() - 604800000
+            },
+            {
+                id: 'init-3',
+                name: "Lorena R.",
+                role: "Cliente Frecuente",
+                rating: 5,
+                comment: "El kit escolar con etiquetas lavables y la agenda organizada nos facilitó muchísimo el inicio de clases. Súper recomendable.",
+                date: "Hace 2 semanas",
+                createdAt: Date.now() - 1209600000
+            }
+        ];
+
+        // Load reviews from localStorage if available
+        let savedLocalReviews = [];
+        try {
+            const raw = localStorage.getItem('mr_reviews');
+            if (raw) savedLocalReviews = JSON.parse(raw);
+        } catch (e) {
+            console.warn("Could not read localStorage reviews", e);
+        }
+
+        let reviews = savedLocalReviews.length > 0 ? savedLocalReviews : [...initialReviews];
+        let selectedRating = 5;
+
+        async function initAuthAndFirestore() {
+            if (!auth || !db) {
+                addCloudLog('warning', 'Almacenamiento Local (Modo GitHub Pages listo).');
+                updateConnectionDiag('🟡 Modo LocalStorage', false);
+                renderReviews();
+                return;
+            }
+
+            try {
+                if (typeof window.__initial_auth_token !== 'undefined' && window.__initial_auth_token) {
+                    addCloudLog('info', 'Autenticando con token...');
+                    const userCredential = await signInWithCustomToken(auth, window.__initial_auth_token);
+                    currentUser = userCredential.user;
+                } else {
+                    addCloudLog('info', 'Autenticando de forma anónima...');
+                    const userCredential = await signInAnonymously(auth);
+                    currentUser = userCredential.user;
+                }
+                updateConnectionDiag('🟢 Conectado a Firestore', true);
+            } catch (error) {
+                console.warn("Autenticación Firebase falló, cambiando a modo LocalStorage:", error);
+                addCloudLog('warning', `Sin Firestore: ${error.message}`);
+                updateConnectionDiag('🟡 Modo LocalStorage', false);
+            }
+
+            if (currentUser) {
+                subscribeToReviews();
+            } else {
+                renderReviews();
+            }
+        }
+
+        function updateConnectionDiag(statusText, isConnected) {
+            const diagStatus = document.getElementById('diag-connection-status');
+            const diagAppId = document.getElementById('diag-app-id');
+            const statusInd = document.getElementById('cloud-status-indicator');
+            const statusTxt = document.getElementById('cloud-status-text');
+
+            if (diagStatus) {
+                diagStatus.textContent = statusText;
+                diagStatus.className = isConnected ? 'font-bold text-emerald-600' : 'font-bold text-amber-600';
+            }
+            if (diagAppId) diagAppId.textContent = appId;
+            if (statusInd) {
+                statusInd.className = isConnected ? 'w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse' : 'w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse';
+            }
+            if (statusTxt) {
+                statusTxt.textContent = isConnected ? 'Nube Sincronizada' : 'Modo Guardado Local';
+            }
+        }
+
+        function subscribeToReviews() {
+            if (!currentUser || !db) return;
+
+            const reviewsRef = collection(db, 'artifacts', appId, 'public', 'data', 'reviews');
+
+            onSnapshot(reviewsRef, (snapshot) => {
+                const fetchedReviews = [];
+                snapshot.forEach(doc => {
+                    fetchedReviews.push({ id: doc.id, ...doc.data() });
+                });
+
+                if (fetchedReviews.length > 0) {
+                    fetchedReviews.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+                    reviews = fetchedReviews;
+                }
+                
+                const totalDocsEl = document.getElementById('diag-total-docs');
+                if (totalDocsEl) totalDocsEl.textContent = `${reviews.length} Reseña(s)`;
+
+                renderReviews();
+            }, (error) => {
+                console.error("Error leyendo Firestore:", error);
+                renderReviews();
+            });
+        }
+
+        function renderReviews() {
+            const grid = document.getElementById('reviews-grid');
+            const avgRatingVal = document.getElementById('avg-rating-value');
+            const totalCountVal = document.getElementById('total-reviews-count');
+            const avgStarsContainer = document.getElementById('avg-rating-stars');
+
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            if (reviews.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-10 glass-card rounded-3xl p-6 border border-pastel-violetBorder/60">
+                        <p class="text-3xl mb-2">✨</p>
+                        <p class="text-slate-800 font-bold text-sm">Aún no hay reseñas registradas.</p>
+                        <p class="text-xs text-slate-500 font-body mt-1">¡Sé la primera persona en dejarnos tu opinión!</p>
+                    </div>
+                `;
+                if (avgRatingVal) avgRatingVal.textContent = "0.0";
+                if (totalCountVal) totalCountVal.textContent = "(0 reseñas)";
+                return;
+            }
+
+            const totalStars = reviews.reduce((sum, r) => sum + Number(r.rating || 5), 0);
+            const avg = (totalStars / reviews.length).toFixed(1);
+
+            if (avgRatingVal) avgRatingVal.textContent = avg;
+            if (totalCountVal) totalCountVal.textContent = `(${reviews.length} ${reviews.length === 1 ? 'reseña' : 'reseñas'})`;
+
+            if (avgStarsContainer) {
+                const roundedAvg = Math.round(Number(avg));
+                let starsHtml = '';
+                for (let i = 1; i <= 5; i++) {
+                    if (i <= roundedAvg) {
+                        starsHtml += `<i class="fa-solid fa-star"></i>`;
+                    } else {
+                        starsHtml += `<i class="fa-regular fa-star text-slate-300"></i>`;
+                    }
+                }
+                avgStarsContainer.innerHTML = starsHtml;
+            }
+
+            reviews.forEach(review => {
+                const card = document.createElement('div');
+                card.className = 'snap-start shrink-0 w-[285px] sm:w-[350px] glass-card p-6 rounded-3xl flex flex-col justify-between border border-pastel-violetBorder/60 hover:border-pastel-pinkBorder/80 transition shadow-sm';
+                
+                let starsHtml = '';
+                for (let i = 1; i <= 5; i++) {
+                    if (i <= review.rating) {
+                        starsHtml += '<i class="fa-solid fa-star"></i>';
+                    } else {
+                        starsHtml += '<i class="fa-regular fa-star text-slate-300"></i>';
+                    }
+                }
+
+                const initials = review.name
+                    ? review.name.split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase()
+                    : '✨';
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex text-amber-400 text-xs sm:text-sm gap-0.5">
+                                ${starsHtml}
+                            </div>
+                            <span class="text-[10px] font-body text-slate-400">${review.date || 'Reciente'}</span>
+                        </div>
+                        <p class="font-body text-slate-700 italic text-xs sm:text-sm leading-relaxed mb-6">"${escapeHtml(review.comment)}"</p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-pastel-violetBorder/40">
+                        <div class="w-9 h-9 rounded-full bg-gradient-to-br from-pastel-pinkLight to-pastel-violetLight text-pastel-violetDark font-bold flex items-center justify-center text-xs shadow-sm border border-pastel-violetBorder shrink-0">
+                            ${initials}
+                        </div>
+                        <div class="min-w-0">
+                            <h4 class="font-bold text-xs text-slate-800 truncate">${escapeHtml(review.name)}</h4>
+                            <p class="text-[10px] font-body text-slate-500 truncate">${escapeHtml(review.role || 'Cliente Mágicos Recuerdos')}</p>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function scrollReviews(direction) {
+            const grid = document.getElementById('reviews-grid');
+            if (!grid) return;
+            const scrollAmount = 320 * direction;
+            grid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function setStarRating(rating) {
+            selectedRating = rating;
+            document.getElementById('review-rating').value = rating;
+            const starBtns = document.querySelectorAll('#star-picker .star-btn');
+            starBtns.forEach(btn => {
+                const val = parseInt(btn.getAttribute('data-value'));
+                if (val <= rating) {
+                    btn.className = 'star-btn text-amber-400 text-2xl transition hover:scale-110 focus:outline-none';
+                    btn.innerHTML = '<i class="fa-solid fa-star"></i>';
+                } else {
+                    btn.className = 'star-btn text-slate-300 text-2xl transition hover:scale-110 focus:outline-none';
+                    btn.innerHTML = '<i class="fa-regular fa-star"></i>';
+                }
+            });
+        }
+
+        function openReviewModal() {
+            const modal = document.getElementById('review-modal');
+            const modalContent = document.getElementById('review-modal-content');
+            if (!modal) return;
+            
+            setStarRating(5);
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            if (modalContent) modalContent.classList.remove('scale-95');
+        }
+
+        function closeReviewModal() {
+            const modal = document.getElementById('review-modal');
+            const modalContent = document.getElementById('review-modal-content');
+            if (!modal) return;
+
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            if (modalContent) modalContent.classList.add('scale-95');
+            
+            const form = document.getElementById('add-review-form');
+            if (form) form.reset();
+        }
+
+        async function handleReviewSubmit(e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('review-name').value.trim();
+            const roleInput = document.getElementById('review-role').value.trim();
+            const commentInput = document.getElementById('review-comment').value.trim();
+            const ratingVal = parseInt(document.getElementById('review-rating').value) || 5;
+
+            if (!nameInput || !commentInput) {
+                showToast('Por favor completa tu nombre y comentario.');
+                return;
+            }
+
+            const newReview = {
+                name: nameInput,
+                role: roleInput || 'Cliente Mágicos Recuerdos',
+                rating: ratingVal,
+                comment: commentInput,
+                date: 'Reciente',
+                createdAt: Date.now()
+            };
+
+            if (db && currentUser) {
+                try {
+                    const reviewsRef = collection(db, 'artifacts', appId, 'public', 'data', 'reviews');
+                    await addDoc(reviewsRef, newReview);
+                    closeReviewModal();
+                    showToast('¡Gracias por tu reseña! Se guardó en la nube ✨');
+                } catch (err) {
+                    saveReviewLocally(newReview);
+                }
+            } else {
+                saveReviewLocally(newReview);
+            }
+        }
+
+        function saveReviewLocally(newReview) {
+            reviews.unshift({ id: 'local-' + Date.now(), ...newReview });
+            try {
+                localStorage.setItem('mr_reviews', JSON.stringify(reviews));
+            } catch (e) {
+                console.warn("Failed to write to localStorage", e);
+            }
+            renderReviews();
+            closeReviewModal();
+            showToast('¡Gracias por tu reseña! Publicada con éxito ✨');
+        }
+
+        function openCloudInspector() {
+            const modal = document.getElementById('cloud-inspector-modal');
+            const modalContent = document.getElementById('cloud-inspector-content');
+            if (!modal) return;
+
+            renderCloudInspectorContent();
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+            if (modalContent) modalContent.classList.remove('scale-95');
+        }
+
+        function closeCloudInspector() {
+            const modal = document.getElementById('cloud-inspector-modal');
+            const modalContent = document.getElementById('cloud-inspector-content');
+            if (!modal) return;
+
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.classList.remove('opacity-100');
+            if (modalContent) modalContent.classList.add('scale-95');
+        }
+
+        function switchCloudTab(tabName) {
+            currentInspectorTab = tabName;
+            const reviewsBtn = document.getElementById('tab-btn-reviews');
+            const logsBtn = document.getElementById('tab-btn-logs');
+
+            if (tabName === 'reviews') {
+                if (reviewsBtn) reviewsBtn.className = 'px-3 py-1.5 rounded-xl text-xs font-bold bg-pastel-violetDark text-white shadow-sm transition';
+                if (logsBtn) logsBtn.className = 'px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition';
+            } else {
+                if (reviewsBtn) reviewsBtn.className = 'px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition';
+                if (logsBtn) logsBtn.className = 'px-3 py-1.5 rounded-xl text-xs font-bold bg-pastel-violetDark text-white shadow-sm transition';
+            }
+
+            renderCloudInspectorContent();
+        }
+
+        function renderCloudInspectorContent() {
+            const container = document.getElementById('cloud-data-view');
+            if (!container) return;
+
+            container.innerHTML = '';
+
+            if (currentInspectorTab === 'reviews') {
+                if (reviews.length === 0) {
+                    container.innerHTML = `<div class="p-6 text-center text-slate-400">No hay documentos de reseñas guardados.</div>`;
+                    return;
+                }
+
+                reviews.forEach((rev, idx) => {
+                    const docCard = document.createElement('div');
+                    docCard.className = 'bg-slate-50 border border-slate-200 p-3.5 rounded-2xl font-mono text-[11px] space-y-1.5';
+                    
+                    docCard.innerHTML = `
+                        <div class="flex items-center justify-between text-slate-500 font-bold border-b border-slate-200 pb-1">
+                            <span class="text-pastel-violetDark"><i class="fa-solid fa-file-code"></i> Doc #${idx + 1} (ID: ${rev.id})</span>
+                            <span class="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full">${rev.rating} ⭐</span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-1 text-slate-700 pt-1">
+                            <div><strong>name:</strong> "${escapeHtml(rev.name)}"</div>
+                            <div><strong>role:</strong> "${escapeHtml(rev.role || 'N/A')}"</div>
+                            <div class="col-span-full"><strong>comment:</strong> "${escapeHtml(rev.comment)}"</div>
+                            <div><strong>createdAt:</strong> ${rev.createdAt || 'N/A'}</div>
+                            <div><strong>date:</strong> "${rev.date || 'Reciente'}"</div>
+                        </div>
+                    `;
+                    container.appendChild(docCard);
+                });
+            } else if (currentInspectorTab === 'logs') {
+                if (cloudLogs.length === 0) {
+                    container.innerHTML = `<div class="p-6 text-center text-slate-400">No hay eventos registrados en la sesión.</div>`;
+                    return;
+                }
+
+                cloudLogs.forEach(log => {
+                    const logCard = document.createElement('div');
+                    let colorClass = 'border-slate-200 text-slate-700 bg-slate-50';
+                    let icon = 'fa-circle-info text-blue-500';
+
+                    if (log.type === 'success') {
+                        colorClass = 'border-emerald-200 text-emerald-900 bg-emerald-50/60';
+                        icon = 'fa-circle-check text-emerald-500';
+                    } else if (log.type === 'warning') {
+                        colorClass = 'border-amber-200 text-amber-900 bg-amber-50/60';
+                        icon = 'fa-triangle-exclamation text-amber-500';
+                    } else if (log.type === 'error') {
+                        colorClass = 'border-rose-200 text-rose-900 bg-rose-50/60';
+                        icon = 'fa-circle-xmark text-rose-500';
+                    }
+
+                    logCard.className = `p-2.5 rounded-xl border ${colorClass} font-mono text-[11px] flex items-start gap-2`;
+                    logCard.innerHTML = `
+                        <i class="fa-solid ${icon} mt-0.5 text-xs shrink-0"></i>
+                        <div class="flex-grow">
+                            <span class="text-[10px] text-slate-400 block font-bold">${log.time}</span>
+                            <span>${escapeHtml(log.message)}</span>
+                        </div>
+                    `;
+                    container.appendChild(logCard);
+                });
+            }
+        }
+
+        function addTestCloudReview() {
+            const names = ["Camila R.", "Gonzalo M.", "Sofía B.", "Agustina P.", "Matías S."];
+            const roles = ["Mamá de Egresado", "Fiesta de 15", "Cumpleaños Infantil", "Graduado 2026"];
+            const comments = [
+                "Excelente atención y puntualidad en la entrega. ¡Superó mis expectativas!",
+                "Los souvenirs vinieron empaquetados hermosamente y a todos les encantó.",
+                "Increíble la calidad de las impresiones y la amabilidad de las chicas.",
+                "Súper recomendable para cualquier tipo de evento familiar."
+            ];
+
+            const testReview = {
+                name: names[Math.floor(Math.random() * names.length)],
+                role: roles[Math.floor(Math.random() * roles.length)],
+                rating: Math.floor(Math.random() * 2) + 4,
+                comment: comments[Math.floor(Math.random() * comments.length)],
+                date: 'Reciente (Prueba)',
+                createdAt: Date.now()
+            };
+
+            saveReviewLocally(testReview);
+        }
+
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'pointer-events-auto bg-white border border-pastel-violetBorder text-slate-800 text-xs px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2 transform transition-all duration-300 translate-y-5 opacity-0 font-body';
+            toast.innerHTML = `<span class="text-pastel-violetDark text-sm">✨</span> <span>${message}</span>`;
+            
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-5', 'opacity-0');
+            }, 50);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Global Bindings for HTML Inline Event Handlers
+        window.renderProducts = renderProducts;
+        window.filterCategory = filterCategory;
+        window.searchProducts = searchProducts;
+        window.addToCart = addToCart;
+        window.updateCartQuantity = updateCartQuantity;
+        window.updateCartUI = updateCartUI;
+        window.toggleCart = toggleCart;
+        window.checkoutWhatsApp = checkoutWhatsApp;
+        window.toggleMobileMenu = toggleMobileMenu;
+        window.handleContactSubmit = handleContactSubmit;
+        window.scrollReviews = scrollReviews;
+        window.setStarRating = setStarRating;
+        window.openReviewModal = openReviewModal;
+        window.closeReviewModal = closeReviewModal;
+        window.handleReviewSubmit = handleReviewSubmit;
+        window.openCloudInspector = openCloudInspector;
+        window.closeCloudInspector = closeCloudInspector;
+        window.switchCloudTab = switchCloudTab;
+        window.addTestCloudReview = addTestCloudReview;
+
+        function initMagicosRecuerdos() {
+            renderProducts();
+            initAuthAndFirestore();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initMagicosRecuerdos);
+        } else {
+            initMagicosRecuerdos();
+        }
+    </script>
+</body>
+</html>
